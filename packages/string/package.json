@@ -1,6 +1,6 @@
 {
     "name": "@swisstype/string",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Your faithful Swiss Knife of string types.",
     "private": false,
     "types": "index.d.ts",
@@ -12,7 +12,7 @@
     "license": "ISC",
     "peerDependencies": {
         "@swisstype/essential": "^0.0.1",
-        "typescript": "^>5"
+        "typescript": "^5.x"
     },
     "sideEffects": false,
     "publishConfig": {

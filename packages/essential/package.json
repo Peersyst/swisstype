@@ -1,6 +1,6 @@
 {
     "name": "@swisstype/essential",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Your faithful Swiss Knife of essential types.",
     "private": false,
     "types": "index.d.ts",
@@ -11,7 +11,7 @@
     "author": "Peersyst",
     "license": "ISC",
     "peerDependencies": {
-        "typescript": "^>5"
+        "typescript": "^5.x"
     },
     "sideEffects": false,
     "publishConfig": {

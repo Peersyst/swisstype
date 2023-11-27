@@ -18,8 +18,7 @@ function main() {
         delete packageData.scripts;
         const newPackageData = {
             ...packageData,
-            main: "lib/index.js",
-            types: "lib/index.d.ts",
+            types: "index.d.ts",
         };
         fse.writeFileSync(buildDistPath("./package.json"), JSON.stringify(newPackageData, null, 2), "utf8");
 

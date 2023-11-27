@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES2022",
+        "lib": ["ES2022", "ES6"],
+        "removeComments": true,
+        "baseUrl": "./",
+        "incremental": true,
+        "skipLibCheck": true,
+        "declaration": true
+    },
+    "exclude": ["**/.*/"]
+}

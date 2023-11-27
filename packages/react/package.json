@@ -1,0 +1,21 @@
+{
+    "name": "@swisstype/react",
+    "version": "0.0.1",
+    "description": "Your faithful Swiss Knife of react types.",
+    "private": false,
+    "types": "index.d.ts",
+    "scripts": {
+        "build": "node ../../scripts/build.js",
+        "clean": "rm -rf dist"
+    },
+    "author": "Peersyst",
+    "license": "ISC",
+    "peerDependencies": {
+        "@types/react": "^>18",
+        "typescript": "^>5"
+    },
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    }
+}

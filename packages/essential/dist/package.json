@@ -1,0 +1,17 @@
+{
+  "name": "@swisstype/essential",
+  "version": "0.0.1",
+  "description": "Your faithful Swiss Knife of essential types.",
+  "private": false,
+  "types": "lib/index.d.ts",
+  "author": "Peersyst",
+  "license": "ISC",
+  "peerDependencies": {
+    "typescript": "^>5"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js"
+}

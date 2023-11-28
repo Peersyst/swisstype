@@ -1,6 +1,6 @@
 {
     "name": "@swisstype/string",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Your faithful Swiss Knife of string types.",
     "private": false,
     "types": "index.d.ts",

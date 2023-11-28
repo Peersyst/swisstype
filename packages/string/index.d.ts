@@ -20,10 +20,10 @@ type Split<S extends string, D extends string> = string extends S
 
 /**
  * Parametrizes a string S with spaces by T
- * @example Parametrize<"{{foo}} bar {{baz}}", `{{${string}}}`> // { foo: string, baz: string }
+ * @example Parametrize<"{{foo}} bar {{baz}}", "{{", "}}"> // { foo: string, baz: string }
  */
-type Parametrize<S extends string, T extends string> = Record<
-    Extract<Split<S, " ">[number], T> extends `{{${infer K}}}` ? K : never,
+export type Parametrize<S extends string, A extends string, B extends string = A> = Record<
+    Extract<Split<S, " ">[number], `${string}${A}${string}${B}${string}`> extends `${string}${A}${infer K}${B}${string}` ? K : never,
     string
 >;
 

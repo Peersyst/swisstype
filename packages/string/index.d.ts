@@ -19,6 +19,17 @@ type Split<S extends string, D extends string> = string extends S
         : [S];
 
 /**
+ * Joins a string array T by S
+ * @example Join<["foo", "bar"]> // "foobar"
+ * @example Join<["foo", "bar"], " "> // "foo bar"
+ */
+type Join<T extends string[], S extends string = ""> = T extends [infer F, ...infer R]
+    ? R["length"] extends 0
+        ? `${F}`
+        : `${F}${S}${Join<R, S>}`
+    : "";
+
+/**
  * Parametrizes a string S with spaces by T
  * @example Parametrize<"{{foo}} bar {{baz}}", "{{", "}}"> // { foo: string, baz: string }
  */
@@ -44,16 +55,47 @@ type GenerateStringUnion<T> = Extract<
 
 /**
  * Converts a camelCase string to snake_case
- * @example CamelToSnakeCase<"fooBar"> // "foo_bar"
  */
-export type CamelToSnakeCase<S extends string> = S extends `${infer Head}${infer Tail}`
-    ? `${Head extends Uppercase<Head> ? "_" : ""}${Lowercase<Head>}${CamelToSnakeCase<Tail>}`
+export type CamelCaseToSnakeCase<S extends string> = S extends `${infer Head}${infer Tail}`
+    ? `${Head extends Exclude<Uppercase<Head>, "_"> ? "_" : ""}${Lowercase<Head>}${CamelCaseToSnakeCase<Tail>}`
     : S;
 
 /**
- * Converts a snake_case string to camelCase
- * @example SnakeToCamelCase<"foo_bar"> // "fooBar"
+ * Splits a string into words by ` `, `-`, `_` and uppercase letters
  */
-export type SnakeToCamelCase<S extends string> = S extends `${infer Head}_${infer Tail}`
-    ? `${Head}${Capitalize<SnakeToCamelCase<Tail>>}`
-    : S;
+export type ToWords<S extends string> = Split<CamelCaseToSnakeCase<Replace<Replace<S, " ", "_">, "-", "_">>, "_">;
+
+/**
+ * Converts a string to PascalCase
+ */
+export type ToPascalCase<S extends string> =
+    ToWords<S> extends [infer F, ...infer R]
+        ? R["length"] extends 0
+            ? Capitalize<F>
+            : `${Capitalize<F>}${ToPascalCase<Join<R, "_">>}`
+        : never;
+
+/**
+ * Converts a string to camelCase
+ */
+export type ToCamelCase<S extends string> = Uncapitalize<ToPascalCase<S>>;
+
+/**
+ * Converts a string to snake_case
+ */
+export type ToSnakeCase<S extends string> =
+    ToWords<S> extends [infer F, ...infer R]
+        ? R["length"] extends 0
+            ? Lowercase<F>
+            : `${Lowercase<F>}_${ToSnakeCase<Join<R, "_">>}`
+        : never;
+
+/**
+ * Converts a string to kebab-case
+ */
+export type ToKebabCase<S extends string> =
+    ToWords<S> extends [infer F, ...infer R]
+        ? R["length"] extends 0
+            ? Lowercase<F>
+            : `${Lowercase<F>}-${ToKebabCase<Join<R, "_">>}`
+        : never;

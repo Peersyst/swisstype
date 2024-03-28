@@ -41,3 +41,19 @@ type GenerateStringUnion<T> = Extract<
     }[keyof T],
     string
 >;
+
+/**
+ * Converts a camelCase string to snake_case
+ * @example CamelToSnakeCase<"fooBar"> // "foo_bar"
+ */
+export type CamelToSnakeCase<S extends string> = S extends `${infer Head}${infer Tail}`
+    ? `${Head extends Uppercase<Head> ? "_" : ""}${Lowercase<Head>}${CamelToSnakeCase<Tail>}`
+    : S;
+
+/**
+ * Converts a snake_case string to camelCase
+ * @example SnakeToCamelCase<"foo_bar"> // "fooBar"
+ */
+export type SnakeToCamelCase<S extends string> = S extends `${infer Head}_${infer Tail}`
+    ? `${Head}${Capitalize<SnakeToCamelCase<Tail>>}`
+    : S;

@@ -158,10 +158,10 @@ type CoreDeepInject<T extends AnyObject, O extends AnyObject, I extends number =
       >;
 
 /**
- * Joins all types from U.
- * @example Join<{ a: string } | { b: number }> = { a: string } & { b: number }
+ * Unites all types from U.
+ * @example Unite<{ a: string } | { b: number }> = { a: string } & { b: number }
  */
-export type Join<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+export type Unite<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
 
 /**
  * Omit required properties from T

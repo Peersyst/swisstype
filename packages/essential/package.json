@@ -1,6 +1,6 @@
 {
     "name": "@swisstype/essential",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Your faithful Swiss Knife of essential types.",
     "private": false,
     "types": "index.d.ts",

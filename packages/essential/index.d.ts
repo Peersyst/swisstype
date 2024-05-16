@@ -4,6 +4,13 @@
 export type AnyObject = Record<string | symbol | number, any>;
 
 /**
+ * Exposes the public interface of a class or any object.
+ */
+export type Interface<T> = {
+    [P in keyof T]: T[P]
+}
+
+/**
  * Like `T & U`, but using the value types from `U` where their properties overlap.
  */
 export type Overwrite<T, U> = DistributiveOmit<T, keyof U> & U;

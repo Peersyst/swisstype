@@ -30,7 +30,7 @@ type Join<T extends string[], S extends string = ""> = T extends [infer F, ...in
     : "";
 
 /**
- * Parametrizes a string S with spaces by T
+ * Parametrizes a string S with spaces by A and B
  * @example Parametrize<"{{foo}} bar {{baz}}", "{{", "}}"> // { foo: string, baz: string }
  */
 export type Parametrize<S extends string, A extends string, B extends string = A> = Record<

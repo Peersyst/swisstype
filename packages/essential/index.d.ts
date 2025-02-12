@@ -95,14 +95,14 @@ type Iterations = [never, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 /**
  * Get nested keys from T in the form of key1.key2...
  */
-export type NestedKeys<T extends object> = CoreNestedKeys<T>;
-type CoreNestedKeys<T extends object, I extends number = MaxRecursiveIterations> = I extends 0
+export type NestedKeys<T extends object, S extends string = "."> = CoreNestedKeys<T, S>;
+type CoreNestedKeys<T extends object, S extends string, I extends number = MaxRecursiveIterations> = I extends 0
     ? never
     : {
           [Key in keyof T]: T[Key] extends object
               ? T[Key] extends any[]
                   ? Key
-                  : `${Key}` | `${Key}.${CoreNestedKeys<T[Key], Iterations[I]>}`
+                  : `${Key}` | `${Key}${S}${CoreNestedKeys<T[Key], S, Iterations[I]>}`
               : Key;
       }[Extract<keyof T, string>];
 

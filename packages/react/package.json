@@ -1,6 +1,6 @@
 {
     "name": "@swisstype/react",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Your faithful Swiss Knife of react types.",
     "private": false,
     "types": "index.d.ts",
@@ -12,7 +12,7 @@
     "license": "ISC",
     "peerDependencies": {
         "@types/react": "^18.x",
-        "typescript": "^5.x"
+        "typescript": "^5.x || ^6.x"
     },
     "sideEffects": false,
     "publishConfig": {

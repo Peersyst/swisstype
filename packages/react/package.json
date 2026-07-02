@@ -1,6 +1,6 @@
 {
     "name": "@swisstype/react",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Your faithful Swiss Knife of react types.",
     "private": false,
     "types": "index.d.ts",

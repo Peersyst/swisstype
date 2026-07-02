@@ -11,7 +11,7 @@
     "author": "Peersyst",
     "license": "ISC",
     "peerDependencies": {
-        "typescript": "^5.x"
+        "typescript": "^5.x || ^6.x"
     },
     "sideEffects": false,
     "publishConfig": {
